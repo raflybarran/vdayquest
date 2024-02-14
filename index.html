@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            transition: all 0.5s;
+            border-radius: 12px; /* membuat tombol membulat */
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        #noButton {
+            background-color: #f44336; /* merubah warna tombol No menjadi merah */
+        }
+        #noButton:hover {
+            background-color: #d32f2f;
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://gifdb.com/images/high/cute-love-bear-roses-ou7zho5oosxnpo6k.gif" alt="Valentine's Day"> <!-- Tambahkan URL gambar Anda di sini -->
+        <h1>Will you be my Valentine?</h1>
+        <button id="yesButton" class="button">Yes</button>
+        <button id="noButton" class="button">No</button>
+    </div>
+    
+
+    <script>
+        var noButton = document.getElementById("noButton");
+        var yesButton = document.getElementById("yesButton");
+        var messages = ["Kamu yakin?", "Are u really sure?", "Yakin? ntar nyesel loh!", "Yang please IYA.", "Nanti aku sedih jadinya :(", " Yaudah deh gamaksa...","Bohong, YOK PENCET IYA","Please sayangku..","Im begging on my knees","Yu brik ma hart brik ma hof :()"];
+        var messageIndex = 0;
+
+        noButton.onclick = function() {
+            yesButton.style.fontSize = (parseInt(window.getComputedStyle(yesButton).fontSize) + 10) + "px";
+            yesButton.style.padding = (parseInt(window.getComputedStyle(yesButton).padding) + 10) + "px";
+
+            if (messageIndex < messages.length) {
+                noButton.textContent = messages[messageIndex];
+                messageIndex++;
+            }
+
+            // Reset the messageIndex after 10 clicks
+            if (messageIndex >= 10) {
+                messageIndex = 0;
+                noButton.textContent = messages[messageIndex];
+            }
+        }
+
+        yesButton.onclick = function() {
+            window.location.href = "index2.html"; // Ganti dengan URL halaman yang Anda inginkan
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            margin-bottom: 20px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            #myButton, #prevButton, #nextButton {
+              transition: width 2s; /* Transisi memanjang selama 2 detik */
+              width: 50px; /* Lebar awal tombol */
+              height: 30px;
+              background-color: #4CAF50; /* Warna latar tombol */
+              color: white; /* Warna teks tombol */
+              border: none;
+              cursor: pointer;
+            }
+            
+            #myButton:hover {
+              width: 100px; /* Lebar tombol saat di-hover */
+            }           
+            
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media.tenor.com/gUiu1zyxfzYAAAAi/bear-kiss-bear-kisses.gif" alt="Pelukan"> <!-- Tambahkan URL gambar GIF Anda di sini -->
+        <h1>Now, this is us on valentines day</h1>
+    </div>
+    <button id="myButton">APA INI</button>
+<div id="blankScreen" style="display: none; position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: white; z-index: 9999;">
+  <img id="newImage" src="" style="display: none; width: 100px; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
+</div>
+<div id="slideshow" style="position: fixed; width: 100%; height: 100%; top: 0; left: 0; background-color: white; z-index: 9999; display: none;">
+    <img id="slideImage" src="" style="width: 100px; margin: auto; position: absolute; top: 0; left: 0; bottom: 0; right: 0;">
+    <button id="prevButton" style="position: absolute; left: 20px; bottom: 20px;">Previous</button>
+    <button id="nextButton" style="position: absolute; right: 20px; bottom: 20px;">Next</button>
+  </div>
+
+  <script>
+    var images = ['https://i.pinimg.com/originals/f8/11/90/f811903680bfc51acac9c55e67e5f654.jpg', 'img/k2.png', 'img/ce.png']; // Ganti dengan URL gambar Anda
+    var currentImageIndex = 0;
+    
+    document.getElementById('myButton').onmouseover = function() {
+      this.innerHTML = 'HATI HATI'; // Mengubah teks tombol saat di-hover
+    }
+    
+    document.getElementById('myButton').onmouseout = function() {
+      this.innerHTML = 'Secret Pics'; // Mengembalikan teks tombol saat mouse tidak lagi diarahkan ke atasnya
+    }
+    
+    document.getElementById('myButton').onclick = function() {
+      var confirmation = confirm('Apakah Anda ingin menampilkan foto?'); // Menampilkan notifikasi konfirmasi
+    
+      if (confirmation) {
+        document.getElementById('slideshow').style.display = 'block'; // Menampilkan slideshow
+        document.getElementById('slideImage').src = images[currentImageIndex]; // Menampilkan gambar pertama
+      }
+    }
+    
+    document.getElementById('prevButton').onclick = function() {
+      currentImageIndex = (currentImageIndex - 1 + images.length) % images.length; // Menghitung indeks gambar sebelumnya
+      document.getElementById('slideImage').src = images[currentImageIndex]; // Menampilkan gambar sebelumnya
+    }
+    
+    document.getElementById('nextButton').onclick = function() {
+      currentImageIndex = (currentImageIndex + 1) % images.length; // Menghitung indeks gambar berikutnya
+      document.getElementById('slideImage').src = images[currentImageIndex]; // Menampilkan gambar berikutnya
+    }
+    </script>
+</body>
+</html>
+
+
+
+
